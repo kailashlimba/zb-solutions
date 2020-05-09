@@ -1,17 +1,31 @@
-#include<bits/stdc++.h>
+
+#include <bits/stdc++.h>
 using namespace std;
 
+bool isPrime(int n, int i = 2)
+{
+    if (n <= 2){
+        if(n == 2) return true;
 
-bool isPrime(int n) {
-    if (n < 2) return true;
-    int upperLimit = (int)(sqrt(n));
-    for (int i = 2; i <= upperLimit; i++) {
-        if (i < n && n % i == 0) return false;
+        return false;
     }
-    return true;
+    if (n % i == 0)
+        return false;
+    if (i * i > n)
+        return true;
+
+    return isPrime(n, i + 1);
 }
-signed main(){
-    int n;
+
+int main()
+{
+    int n ;
     cin>>n;
-    cout<<isPrime(n);
+
+    if (isPrime(n))
+        cout << "Prime";
+    else
+        cout << "Not prime ";
+
+    return 0;
 }
